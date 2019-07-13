@@ -1,0 +1,8 @@
+*.key
+*.address
+*.abi
+*.swp
+*.swo
+
+node_modules
+
