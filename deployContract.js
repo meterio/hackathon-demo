@@ -16,13 +16,16 @@ web3.eth.accounts.wallet.add(privateKey);
 
 const code = readContractCode();
 const compiledCode = solc.compile(code);
+console.log(compiledCode);
+const contractName = "SAMPLEToken";
 console.log("Contract compiled");
 
 const token_abiDefinition = JSON.parse(
-  compiledCode.contracts[":SAMPLEToken"].interface
+  compiledCode.contracts[`:${contractName}`].interface
 );
 writeAbiDefinition(JSON.stringify(token_abiDefinition));
-const token_byteCode = "0x" + compiledCode.contracts[":SAMPLEToken"].bytecode;
+const token_byteCode =
+  "0x" + compiledCode.contracts[`:${contractName}`].bytecode;
 
 contractInstance = new web3.eth.Contract(token_abiDefinition);
 contractInstance.options.data = token_byteCode;
